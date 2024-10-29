@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { alpha } from '@mui/material/styles';
-
+import { SvgIconProps } from '@mui/material/SvgIcon';
 import { buttonBaseClasses } from '@mui/material/ButtonBase';
 import { dividerClasses } from '@mui/material/Divider';
 import { menuItemClasses } from '@mui/material/MenuItem';
@@ -8,6 +8,10 @@ import { selectClasses } from '@mui/material/Select';
 import { tabClasses } from '@mui/material/Tab';
 import UnfoldMoreRoundedIcon from '@mui/icons-material/UnfoldMoreRounded';
 import { gray, brand } from '../themePrimitives';
+
+// const UnfoldMoreIcon = React.forwardRef<SVGAElement, SvgIconProps>(function UnfoldMoreIcon(props, ref) {
+//   return <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />;
+// });
 
 /* eslint-disable import/prefer-default-export */
 export const navigationCustomizations = {
@@ -58,9 +62,9 @@ export const navigationCustomizations = {
   },
   MuiSelect: {
     defaultProps: {
-      IconComponent: React.forwardRef((props, ref) => (
-        <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />
-      )),
+      IconComponent: (React.forwardRef(function UnfoldMoreIcon(props, ref) {
+        return <UnfoldMoreRoundedIcon fontSize="small" {...props} ref={ref} />;
+      })),
     },
     styleOverrides: {
       root: ({ theme }) => ({
